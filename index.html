@@ -1,0 +1,440 @@
+<!doctype html><html><head><meta charset=utf8><meta name=robots content="noindex,nofollow"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>HubSpot для Partnership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#f3f5f6; --surface:#ffffff; --sunk:#e9eef0; --ink:#17212b; --muted:#5b6873; --line:#d5dde2;
+  --accent:#0d6b6e; --accent-soft:#dcefee; --accent-ink:#ffffff;
+  --warn:#9a5b00; --warn-soft:#fbefd9; --crit:#a3261d; --crit-soft:#f8e1de; --ok:#2c6e2f; --ok-soft:#e1f0df;
+  --side:#6b5b95; --side-soft:#ece8f5;
+  --radius:10px;
+  --display:"Unbounded", "Trebuchet MS", sans-serif;
+  --body:"Onest", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0f1519; --surface:#172026; --sunk:#1e2a31; --ink:#e6edf1; --muted:#9aa9b3; --line:#2c3a42;
+    --accent:#4fb8b4; --accent-soft:#16373a; --accent-ink:#0b1a1b;
+    --warn:#e8b25a; --warn-soft:#3a2c14; --crit:#f08a80; --crit-soft:#3d1c19; --ok:#8ccf8e; --ok-soft:#1b3320;
+    --side:#b3a4dd; --side-soft:#2a2540;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0f1519; --surface:#172026; --sunk:#1e2a31; --ink:#e6edf1; --muted:#9aa9b3; --line:#2c3a42;
+  --accent:#4fb8b4; --accent-soft:#16373a; --accent-ink:#0b1a1b;
+  --warn:#e8b25a; --warn-soft:#3a2c14; --crit:#f08a80; --crit-soft:#3d1c19; --ok:#8ccf8e; --ok-soft:#1b3320;
+  --side:#b3a4dd; --side-soft:#2a2540;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:grid;gap:36px}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(24px,4vw,34px);line-height:1.15}
+h2{font-size:19px}
+h3{font-size:15px;font-family:var(--body);font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+.eyebrow{font:500 11px/1 var(--body);text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+header{display:grid;gap:14px}
+.lead{max-width:62ch;font-size:16px}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--warn-soft);color:var(--ink);border-radius:var(--radius);padding:12px 14px;max-width:72ch;font-size:14px}
+.note b{color:var(--warn)}
+section{display:grid;gap:14px}
+.sec-head{display:grid;gap:4px}
+.day{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.day li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:grid;gap:4px;align-content:start}
+.day ol{display:contents}
+.num{font:500 12px var(--mono);color:var(--accent)}
+.pipe-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:14px}
+.lane-label{font:500 11px var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.lane{display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center}
+.stage{appearance:none;border:1px solid var(--line);background:var(--sunk);color:var(--ink);font:500 14px var(--body);padding:9px 12px;border-radius:8px;cursor:pointer;display:grid;gap:1px;text-align:left;transition:background .15s,border-color .15s}
+.stage small{font:500 11px var(--mono);color:var(--muted)}
+.stage:hover{border-color:var(--accent)}
+.stage:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.stage[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.stage[aria-pressed="true"] small{color:var(--accent-ink);opacity:.8}
+.stage.side{background:var(--side-soft)}
+.stage.side[aria-pressed="true"]{background:var(--side);border-color:var(--side);color:var(--accent-ink)}
+.stage.lost{background:var(--crit-soft)}
+.stage.lost[aria-pressed="true"]{background:var(--crit);border-color:var(--crit);color:var(--accent-ink)}
+.stage.won{background:var(--ok-soft)}
+.stage.won[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--accent-ink)}
+.arrow{color:var(--muted);font-size:14px;padding-inline:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:18px}
+.detail-top{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:baseline;justify-content:space-between}
+.detail-top h2{font-size:22px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 12px var(--body);padding:4px 9px;border-radius:99px;background:var(--sunk);color:var(--ink)}
+.chip.t{background:var(--accent-soft);color:var(--accent)}
+.chip.w{background:var(--warn-soft);color:var(--warn)}
+.chip.c{background:var(--crit-soft);color:var(--crit)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:20px}
+.block{display:grid;gap:8px;align-content:start}
+.block ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:2px solid var(--line);margin-left:22px}
+.timeline li{position:relative;padding:0 0 12px 18px;display:grid;gap:1px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.timeline li.w::before{border-color:var(--warn);background:var(--warn)}
+.timeline li.c::before{border-color:var(--crit);background:var(--crit)}
+.timeline .d{font:500 12px var(--mono);color:var(--muted)}
+.timeline li.w .d{color:var(--warn)}
+.timeline li.c .d{color:var(--crit)}
+.empty{color:var(--muted);font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:grid;gap:6px;align-content:start}
+.card.dont{border-color:color-mix(in srgb,var(--crit) 35%,var(--line))}
+.card.dont h3{color:var(--crit)}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font:500 11px var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--sunk)}
+td.msg{font-style:italic;color:var(--muted);width:46%}
+td.who{white-space:nowrap}
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+details+details{margin-top:8px}
+summary{cursor:pointer;padding:13px 16px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:500 16px var(--mono);color:var(--accent)}
+details[open] summary::after{content:"−"}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:var(--radius)}
+.how{padding:0 16px 16px;display:grid;gap:10px}
+.how ol{margin:0;padding-left:20px;display:grid;gap:4px}
+.tpl{position:relative;background:var(--sunk);border-radius:8px;padding:12px 14px;font:13px/1.6 var(--mono);white-space:pre-wrap}
+.copy{position:absolute;top:8px;right:8px;font:500 12px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:4px 9px;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--accent)}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px;display:grid;gap:4px;align-content:start;font-size:14px}
+.step.alt{background:var(--warn-soft);border-color:transparent}
+footer{font-size:12px;color:var(--muted)}
+@media (max-width:760px){
+  .day,.flow{grid-template-columns:minmax(0,1fr)}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+  .arrow{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.fcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.flist{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:0}
+.flist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.flist li:first-child{border-top:0}
+.flist li>span:last-child{flex-basis:100%;color:var(--muted);font-size:13px}
+.flist .chip{padding:1px 7px;font-size:11px}
+.small{font-size:13px}
+@media (max-width:760px){.fcards{grid-template-columns:minmax(0,1fr)}}
+.shot{margin:4px 0 0;display:grid;gap:6px;max-width:820px}
+.shot a{display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--sunk)}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-size:13px;color:var(--muted)}
+.shot.narrow{max-width:420px}
+.shots2{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:14px;align-items:start}
+.shots2 .shot.tall{max-width:260px}
+@media (max-width:760px){.shots2{grid-template-columns:minmax(0,1fr)}}
+.lnk{color:var(--accent);font-weight:500;text-decoration:none}.lnk:hover{text-decoration:underline}
+.shot.wide{max-width:none}
+.hscroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sunk)}
+.hscroll a{border:0;border-radius:0;width:max-content}
+.shot.wide img{width:1600px;max-width:none}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">CAS.AI · Partnership · воронка CAS</span>
+    <h1>Как работать со сделками в HubSpot</h1>
+    <p class="lead">Нажмите на стадию — увидите, что она значит, какой у неё срок, что нужно заполнить и какие задачи и сообщения пришлёт HubSpot.</p>
+    <div class="note"><b>!</b><span>Автоматические задачи и сообщения в Slack приходят только после того, как автоматизации включены. Пока их нет, ставьте задачи вручную.</span></div>
+  </header>
+
+  <section aria-labelledby="day-h">
+    <div class="sec-head"><h2 id="day-h">Мой день в HubSpot</h2></div>
+    <ol class="day">
+      <li><span class="num">1</span><h3>Откройте задачи на сегодня</h3><p class="muted">CRM → Tasks, вкладки Due today и Overdue.</p><p><a class="lnk" href="https://app-eu1.hubspot.com/contacts/146422508/objects/0-27/views/all/list" target="_blank" rel="noopener">Открыть My tasks в HubSpot ↗</a></p></li>
+      <li><span class="num">2</span><h3>Пройдите их по очереди</h3><p class="muted">Наведите на задачу и нажмите Preview — иконку справа от названия. Откроется задача вместе с карточкой сделки.</p></li>
+      <li><span class="num">3</span><h3>Оставьте следующий шаг</h3><p class="muted">У каждой открытой сделки должна быть задача с датой.</p></li>
+    </ol>
+    <figure class="shot"><a href="img/tasks.jpg" target="_blank" rel="noopener"><img src="img/tasks.jpg" alt="CRM → Tasks: вкладки Due today (на сегодня) и Overdue (просроченные). Стрелка — кнопка Preview, она появляется, когда наводите мышь на задачу" loading="lazy"></a><figcaption>CRM → Tasks: вкладки Due today (на сегодня) и Overdue (просроченные). Стрелка — кнопка Preview, она появляется, когда наводите мышь на задачу</figcaption></figure>
+  </section>
+
+  <section aria-labelledby="pipe-h">
+    <div class="sec-head"><h2 id="pipe-h">Стадии сделки</h2><p><b>Все сроки и дни на этой странице — рабочие (бизнес-дни, пн–пт).</b> <span class="muted">Выходные не считаются. Исключения помечены отдельно.</span></p></div>
+    <p><a class="lnk" href="https://app-eu1.hubspot.com/contacts/146422508/objects/0-3/views/160703303/board" target="_blank" rel="noopener">Открыть доску сделок в HubSpot ↗</a></p>
+    <figure class="shot wide"><div class="hscroll"><a href="img/board_all.jpg" target="_blank" rel="noopener"><img src="img/board_all.jpg" alt="Доска сделок Integration Board со всеми стадиями" loading="lazy"></a></div><figcaption>Так выглядит доска в HubSpot: каждая колонка — стадия, всего 11. Картинку можно прокрутить вправо или открыть целиком по клику. Названия клиентов, имена и суммы размыты.</figcaption></figure>
+    <div class="pipe-box">
+      <div class="lane-label">Основной путь</div>
+      <div class="lane" id="lane-main"></div>
+      <div class="lane-label">Боковые стадии</div>
+      <div class="lane" id="lane-side"></div>
+      <div class="legend">
+        <span style="--c:var(--sunk)">ваша работа</span>
+        <span style="--c:var(--ok-soft)">клиент зарабатывает</span>
+        <span style="--c:var(--crit-soft)">сделка закрыта</span>
+        <span style="--c:var(--side-soft)">стадия биздевов или маркетинга</span>
+      </div>
+    </div>
+    <article class="detail" id="detail" aria-live="polite"></article>
+  </section>
+
+  <section aria-labelledby="rules-h">
+    <div class="sec-head"><h2 id="rules-h">Правила для всех сделок</h2></div>
+    <div class="cards">
+      <div class="card"><h3>Всегда есть задача с датой</h3><p class="muted">Если у сделки 2 рабочих дня нет ни одной задачи, вам придёт напоминание в Slack.</p></div>
+      <div class="card"><h3>Просрочка идёт в два шага</h3><p class="muted">Вышел срок стадии в рабочих днях — сообщение вам. Прошло вдвое больше — сообщение Антону.</p></div>
+      <div class="card"><h3>Задержались — объясните</h3><p class="muted">Если сделка сидит на стадии дольше срока в рабочих днях, оставьте комментарий с причиной.</p></div>
+      <div class="card dont"><h3>Не меняйте название сделки</h3><p class="muted">Оно совпадает с названием чата, по нему клиента заводят в 1С.</p></div>
+      <div class="card dont"><h3>Не трогайте Deal owner</h3><p class="muted">Там биздев. Ваше имя стоит в поле Integration manager.</p></div>
+      <div class="card dont"><h3>Не отвязывайте контакт</h3><p class="muted">Сделка без контакта ломает отчёт по конверсии.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="card-h">
+    <div class="sec-head"><h2 id="card-h">Карточка сделки: какие поля чьи</h2><p class="muted">Все поля — в блоке About this deal слева. Большую часть заполняет биздев, ваша задача — проверить их и вести стадию.</p></div>
+    <div class="fcards">
+      <div class="card">
+        <h3>Проверьте, когда сделка пришла</h3>
+        <p class="muted">Заполняет биздев. <span class="chip w">обяз.</span> — без этих полей HubSpot не создаст сделку.</p>
+        <ul class="flist">
+          <li><b>Lead Source</b> <span class="chip w">обяз.</span><span>Inbound или Outbound</span></li>
+          <li><b>Client level</b> <span class="chip w">обяз.</span><span>уровень клиента, по нему выбирается очередь</span></li>
+          <li><b>App Link</b> <span class="chip w">обяз.</span><span>ссылка на приложение в маркете</span></li>
+          <li><b>Communication channel</b> <span class="chip w">обяз.</span><span>где чат: Telegram, WhatsApp, Slack…</span></li>
+          <li><b>Product type</b> <span class="chip w">обяз.</span><span>App или Game</span></li>
+          <li><b>Genre</b> <span class="chip w">обяз.</span><span>жанр приложения</span></li>
+          <li><b>Service</b><span>Mediation, Publishing или оба</span></li>
+          <li><b>Country</b><span>страна клиента</span></li>
+          <li><b>Outbound Source</b><span>канал, если Lead Source = Outbound</span></li>
+          <li><b>True About CAS.AI</b><span>откуда клиент о нас узнал</span></li>
+          <li><b>Bitrix deal link</b><span>ссылка на старую карточку в Bitrix</span></li>
+        </ul>
+        <p class="muted small">Нашли пустое поле или ошибку — напишите биздеву. Какая медиация стояла у клиента до CAS — в блоке Contacts, колонка Current mediation.</p>
+      </div>
+      <div class="card">
+        <h3>Заполняете вы</h3>
+        <ul class="flist">
+          <li><b>Deal stage</b><span>стадия сделки, двигаете вы</span></li>
+          <li><b>Closed Won Reason</b> <span class="chip w">обяз.</span><span>при переходе в Closed Won: почему клиент остался с нами</span></li>
+          <li><b>Closed Lost Reason</b> <span class="chip w">обяз.</span><span>при переходе в Closed Lost и Test failed: выбрать причину из списка</span></li>
+          <li><b>Current Status</b><span>текущий статус работы с клиентом: В работе, Comeback, Recall, Нет ответа, NON SQL, Remarketing 1 (All MQL), Remarketing 2 (All SQL)</span></li>
+          <li><b>Комментарии (Note)</b><span>по шаблону из раздела «Как сделать»</span></li>
+        </ul>
+        <p class="muted small">HubSpot сам откроет окно с обязательным полем, когда вы меняете стадию. Не заполните — сделка не перейдёт.</p>
+      </div>
+      <div class="card">
+        <h3>Заполняется само</h3>
+        <ul class="flist">
+          <li><b>Integration manager</b><span>вы; ставит автораспределение, переназначает Антон</span></li>
+          <li><b>Last contacted</b><span>дата последнего касания</span></li>
+          <li><b>Record source</b><span>откуда создана сделка</span></li>
+        </ul>
+        <h3 style="margin-top:10px">Скоро появится</h3>
+        <ul class="flist">
+          <li><b>Приоритет важности контрагента из 1С</b><span>выгружается вручную, кнопкой в 1С</span></li>
+          <li><b>Оборот за прошлый месяц из 1С</b><span>выгрузка раз в неделю</span></li>
+        </ul>
+      </div>
+      <div class="card dont">
+        <h3>Не трогайте</h3>
+        <ul class="flist">
+          <li><b>Deal name</b><span>совпадает с названием чата, по нему клиента заводят в 1С</span></li>
+          <li><b>Deal owner</b><span>биздев или лидген, от этого зависит их процент</span></li>
+          <li><b>Lead Source (CAS.exchange)</b><span>поле другой воронки, пропускайте</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="shots2"><figure class="shot"><a href="img/card.jpg" target="_blank" rel="noopener"><img src="img/card.jpg" alt="Карточка сделки: слева кнопки Note и Task и стадия (Deal Stage), ниже блок About this deal" loading="lazy"></a><figcaption>Карточка сделки: слева кнопки Note и Task и стадия (Deal Stage), ниже блок About this deal</figcaption></figure><figure class="shot tall"><a href="img/fields.jpg" target="_blank" rel="noopener"><img src="img/fields.jpg" alt="Блок About this deal целиком — все поля из списка выше" loading="lazy"></a><figcaption>Блок About this deal целиком — все поля из списка выше</figcaption></figure></div>
+    <details id="how-lost">
+      <summary>Какую причину отвала выбрать</summary>
+      <div class="how">
+        <div class="tbl"><table>
+          <thead><tr><th>Причина в списке</th><th>Когда выбирать</th></tr></thead>
+          <tbody>
+            <tr><td>Клиент перестал выходить на связь</td><td>Не отвечает в чате, и попытки связаться ничего не дали.</td></tr>
+            <tr><td>Остался у конкурента</td><td>Выбрал другую медиацию или паблишера.</td></tr>
+            <tr><td>Не подошёл формат сотрудничества</td><td>Не устроили условия: комиссия, договор, модель работы.</td></tr>
+            <tr><td>Не прошли тест, плохие метрики</td><td>Тест показал результат хуже, чем у текущего решения клиента.</td></tr>
+            <tr><td>Подозрение на фрод или ферму</td><td>Трафик или поведение приложения выглядят подозрительно.</td></tr>
+            <tr><td>Технические проблемы интеграции</td><td>Интеграция не взлетела из-за SDK, крашей или ограничений платформы.</td></tr>
+            <tr><td>Приложение снято с маркета или забанено</td><td>Приложения больше нет в сторе.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="muted small">Причину в поле всё равно дополните комментарием: поле нужно для отчётов, комментарий — для истории.</p>
+      </div>
+    </details>
+  </section>
+
+  <section aria-labelledby="new-h">
+    <div class="sec-head"><h2 id="new-h">Как новая сделка попадает к вам</h2><p class="muted">Автоматически, с 1 октября 2026.</p></div>
+    <div class="flow">
+      <div class="step"><span class="num">1</span>Биздев создаёт сделку в воронке CAS. Без поля Client level HubSpot сделку не сохранит.</div>
+      <div class="step"><span class="num">2</span>HubSpot смотрит Client level и выбирает очередь: Level 0–1 (и MQL), Level 2 или Level 3.</div>
+      <div class="step"><span class="num">3</span>Сделка случайно достаётся одному из пяти менеджеров.</div>
+      <div class="step"><span class="num">4</span>Вам приходит сообщение в Slack с названием сделки.</div>
+    </div>
+    <p class="muted" style="max-width:72ch;font-size:14px">Распределение случайное: у каждого шанс 20%, за месяц нагрузка выравнивается. Если перекос, Антон переназначит вручную.</p>
+  </section>
+
+  <section aria-labelledby="slack-h">
+    <div class="sec-head"><h2 id="slack-h">Пришло сообщение в Slack — что делать</h2></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Сообщение</th><th>Кому</th><th>Что сделать</th></tr></thead>
+        <tbody>
+          <tr><td class="msg">«Вам назначена новая сделка в воронке CAS…»</td><td class="who">вам</td><td>Откройте карточку, проверьте чат с клиентом, поставьте первую задачу.</td></tr>
+          <tr><td class="msg">«У открытой сделки два рабочих дня нет ни одной задачи с датой…»</td><td class="who">вам</td><td>Поставьте задачу со следующим шагом или закройте сделку.</td></tr>
+          <tr><td class="msg">«Срок на стадии истёк…»</td><td class="who">вам</td><td>Переведите сделку дальше или напишите комментарий, почему задержка.</td></tr>
+          <tr><td class="msg">«Эскалация: сделка стоит на стадии вдвое дольше норматива…»</td><td class="who">Антону и вам</td><td>Антон подключится. Заранее оставьте комментарий с причиной.</td></tr>
+          <tr><td class="msg">«A/B Test идёт 40 рабочих дней, итогов и решения клиента нет…»</td><td class="who">Антону</td><td>Подведите итоги теста с клиентом до 45-го рабочего дня.</td></tr>
+          <tr><td class="msg">«По клиенту в Closed Won 45 дней нет ни одного комментария…»</td><td class="who">Антону и вам</td><td>Оставьте комментарий: выручка, риски, планы.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <div class="sec-head"><h2 id="how-h">Как сделать</h2></div>
+    <div>
+      <details id="how-stage">
+        <summary>Перевести сделку на другую стадию</summary>
+        <div class="how">
+          <p><b>На доске.</b></p>
+          <ol><li>CRM → Deals, вид Board, в панели над доской выберите pipeline «CAS». <a class="lnk" href="https://app-eu1.hubspot.com/contacts/146422508/objects/0-3/views/160703303/board" target="_blank" rel="noopener">Открыть доску сделок ↗</a></li><li>Перетащите карточку в колонку нужной стадии.</li><li>Если HubSpot попросит заполнить поле — заполните, иначе сделка не перейдёт.</li></ol><figure class="shot narrow"><a href="img/board.jpg" target="_blank" rel="noopener"><img src="img/board.jpg" alt="Доска сделок: колонки — стадии, в панели над доской переключатель pipeline «CAS». Названия клиентов и имена размыты" loading="lazy"></a><figcaption>Доска сделок: колонки — стадии, в панели над доской переключатель pipeline «CAS». Названия клиентов и имена размыты</figcaption></figure>
+          <p><b>В карточке.</b></p>
+          <ol><li>Откройте сделку.</li><li>Слева под названием нажмите на текущую стадию рядом с Deal Stage.</li><li>Выберите новую стадию из списка.</li></ol><figure class="shot narrow"><a href="img/stage.jpg" target="_blank" rel="noopener"><img src="img/stage.jpg" alt="Нажмите на стадию — откроется список стадий с поиском" loading="lazy"></a><figcaption>Нажмите на стадию — откроется список стадий с поиском</figcaption></figure>
+        </div>
+      </details>
+      <details id="how-task">
+        <summary>Поставить задачу</summary>
+        <div class="how">
+          <ol><li>Откройте сделку и нажмите Task под названием.</li><li>Название — действием: «Уточнить у клиента дату релиза версии с CAS».</li><li>Укажите срок в поле Activity date.</li><li>В Activity assigned to оставьте себя и нажмите Create.</li></ol><figure class="shot"><a href="img/task.jpg" target="_blank" rel="noopener"><img src="img/task.jpg" alt="Окно задачи: название, срок (Activity date), исполнитель (Activity assigned to), кнопка Create внизу" loading="lazy"></a><figcaption>Окно задачи: название, срок (Activity date), исполнитель (Activity assigned to), кнопка Create внизу</figcaption></figure>
+        </div>
+      </details>
+      <details id="how-note">
+        <summary>Оставить комментарий</summary>
+        <div class="how">
+          <ol><li>Откройте сделку и нажмите Note под названием.</li><li>Напишите по шаблону и нажмите Create note.</li><li>Во вкладке Activities у заметки нажмите Actions → Pin, чтобы она была сверху.</li></ol><p class="muted small">Удобно: внизу окна заметки есть галочка Create a To-do task to follow up — поставьте её, и следующая задача создастся сразу вместе с заметкой.</p><figure class="shot"><a href="img/note.jpg" target="_blank" rel="noopener"><img src="img/note.jpg" alt="Окно заметки: текст, галочка для задачи-напоминания, кнопка Create note" loading="lazy"></a><figcaption>Окно заметки: текст, галочка для задачи-напоминания, кнопка Create note</figcaption></figure><figure class="shot"><a href="img/activities.jpg" target="_blank" rel="noopener"><img src="img/activities.jpg" alt="Вкладка Activities: вся история по сделке — задачи, заметки, смены стадий" loading="lazy"></a><figcaption>Вкладка Activities: вся история по сделке — задачи, заметки, смены стадий</figcaption></figure>
+          <div class="tpl" id="tpl">Дата:
+Сейчас:
+Последнее в чате:
+Следующий шаг:
+Если срок стадии просрочен — почему:<button class="copy" id="copy-btn" type="button">Копировать</button></div>
+        </div>
+      </details>
+    </div>
+  </section>
+</div>
+
+<script>
+const S = [
+ {id:"chat-created", lane:"main", name:"Chat created", term:"7 рабочих дней",
+  what:"Чат с клиентом создан, вас добавили в чат.",
+  enter:["Сделку переводит биздев, вы получаете её уже здесь."],
+  next:"Отправили настройки приложения → Integration. Клиент не готов → BD nurturing.",
+  tl:[["3-й день","Задача: отправить клиенту настройки и договориться о старте интеграции"],["7-й день","Задача: проверить, что с клиентом"],["7-й день","Срок вышел — сообщение вам","w"],["14-й день","Сообщение Антону","c"]]},
+ {id:"integration", lane:"main", name:"Integration", term:"7 рабочих дней",
+  what:"Клиент получил настройки приложения. Ход за клиентом.",
+  enter:["Настройки приложения отправлены клиенту."],
+  next:"Версия с CAS опубликована в маркете → Integration 5-10%.",
+  tl:[["2-й день","Касание 1: получил ли клиент настройки, когда планирует интеграцию"],["5-й день","Касание 2: уточнить сроки интеграции"],["7-й день","Срок вышел — сообщение вам","w"],["9-й день","Задача: разобраться, что мешает клиенту"],["14-й день","Касание 3: предложить помощь техспециалиста"],["14-й день","Сообщение Антону","c"],["20-й день","Касание 4: решить — держим, переводим в BD nurturing или закрываем"]]},
+ {id:"integration-5-10", lane:"main", name:"Integration 5-10%", term:"10 рабочих дней",
+  what:"Интеграция завершена, версия с CAS опубликована в маркете.",
+  enter:["Переводите сюда только после проверки: версия приложения с CAS SDK опубликована в маркете. На этой стадии это уже не проверяем."],
+  next:"Клиент хочет сравнить медиации → A/B Test. Сразу выкатывает на 100% и появилась выручка → Closed Won.",
+  tl:[["5-й день","Задача: уточнить % раскатки версии с CAS SDK и состояние по крашам и ANR"],["10-й день","Задача: срок стадии вышел — решить, предлагаем A/B-тест или выкатку на 100%"],["10-й день","Срок вышел — сообщение вам","w"],["20-й день","Сообщение Антону","c"]]},
+ {id:"ab-test", lane:"main", name:"A/B Test", term:"45 рабочих дней",
+  what:"Клиент сравнивает медиации или идёт тест паблишинга.",
+  enter:["Клиент согласился на тест."],
+  next:"Тест пройден → Passed A/B Test. Тест проигран → Test failed.",
+  tl:[["7, 14, 21, 28-й день","Задача: снять промежуточные показатели теста"],["30-й день","Задача: подвести итоги и согласовать решение с клиентом"],["40-й день","Задача: нужны итоги и решение клиента + сообщение Антону","w"],["45-й день","Срок вышел — сообщение вам","w"],["60-й день","Сообщение Антону","c"]]},
+ {id:"passed-ab", lane:"main", name:"Passed A/B Test", term:"без срока",
+  what:"Тест пройден, но клиент ещё не выкатил приложение на 100%.",
+  enter:["Тест закончен в пользу CAS."],
+  next:"Клиент выкатил на 100% и зарабатывает → Closed Won.",
+  tl:[["14-й день","Задача: предложить выкатку на 100%"],["дальше каждые 22 рабочих дня (≈ месяц)","Та же задача, всего 6 раз — примерно полгода"]]},
+ {id:"closed-won", lane:"main", name:"Closed Won", term:"без срока", kind:"won",
+  what:"У клиента появилась любая выручка. Это User.",
+  enter:["Обязательно: поле Closed won reason — без него сделка не перейдёт.","Сразу оставьте первый комментарий. Без него не сработает контроль комментариев."],
+  next:"Клиент перевёл несколько проектов → Sold. Клиент ушёл → Client revival.",
+  tl:[["каждые 22 рабочих дня (≈ месяц)","Задача: комментарий — динамика выручки, риски, планы (12 раз, год)"],["45 календарных дней без комментария","Сообщение Антону и вам","c"]]},
+ {id:"sold", lane:"main", name:"Sold", term:"без срока", kind:"won",
+  what:"Довольный клиент, перевёл несколько проектов на CAS. Это Client.",
+  enter:["Комментарии — только по важным событиям."],
+  next:"",
+  tl:[["через 90 календарных дней","Задача: связаться с клиентом — как монетизация, есть ли новые проекты"]],
+  extra:"Только для сделок, перешедших в Sold с 1 октября 2026."},
+ {id:"bd-nurturing", lane:"side", name:"BD nurturing", term:"без срока", kind:"side",
+  what:"Чат создан, но клиент пока не готов начинать.",
+  enter:["Стадия биздевов. Сроков и задач для вас нет."],
+  next:"Клиент готов → Integration.", tl:[]},
+ {id:"closed-lost", lane:"side", name:"Closed Lost", term:"без срока", kind:"lost",
+  what:"Клиент недоволен результатом или перестал отвечать.",
+  enter:["Обязательно: поле Closed lost reason.","Комментарий с причиной отвала."],
+  next:"", tl:[]},
+ {id:"test-failed", lane:"side", name:"Test failed", term:"без срока", kind:"lost",
+  what:"Прошёл полноценный A/B-тест, тест проигран.",
+  enter:["Обязательно: поле Closed lost reason.","Комментарий: почему проиграли."],
+  next:"", tl:[]},
+ {id:"client-revival", lane:"side", name:"Client revival", term:"без срока", kind:"side",
+  what:"Клиент зарабатывал и был в Closed Won, но ушёл.",
+  enter:["Зона маркетинга и биздевов.","Комментарий: почему ушёл и что пробуем."],
+  next:"Клиент вернулся → Integration или A/B Test.", tl:[]}
+];
+
+const main = document.getElementById("lane-main"), side = document.getElementById("lane-side"), detail = document.getElementById("detail");
+const btns = {};
+S.forEach((s,i)=>{
+  const b = document.createElement("button");
+  b.type="button"; b.className="stage"+(s.kind?" "+s.kind:""); b.id="btn-"+s.id;
+  b.setAttribute("aria-pressed","false");
+  b.innerHTML = `<span>${s.name}</span><small>${s.term}</small>`;
+  b.addEventListener("click",()=>select(s.id,true));
+  btns[s.id]=b;
+  const lane = s.lane==="main"?main:side;
+  if(s.lane==="main" && lane.children.length){const a=document.createElement("span");a.className="arrow";a.textContent="→";a.setAttribute("aria-hidden","true");lane.appendChild(a);}
+  lane.appendChild(b);
+});
+
+function select(id,push){
+  const s = S.find(x=>x.id===id) || S[0];
+  Object.values(btns).forEach(b=>b.setAttribute("aria-pressed","false"));
+  btns[s.id].setAttribute("aria-pressed","true");
+  const termChip = s.term==="без срока" ? `<span class="chip">Без срока</span>` : `<span class="chip t">Срок: ${s.term}</span>`;
+  const tl = s.tl.length
+    ? `<ol class="timeline">${s.tl.map(t=>`<li class="${t[2]||""}"><span class="d">${t[0]}</span><span>${t[1]}</span></li>`).join("")}</ol>`
+    : `<p class="empty">Автоматических задач и сообщений на этой стадии нет.</p>`;
+  detail.innerHTML = `
+    <div class="detail-top"><h2>${s.name}</h2><div class="chips">${termChip}</div></div>
+    <div class="grid2">
+      <div class="block">
+        <span class="eyebrow">Что это</span><p>${s.what}</p>
+        <span class="eyebrow" style="margin-top:8px">Что нужно</span><ul>${s.enter.map(e=>`<li>${e}</li>`).join("")}</ul>
+        ${s.next?`<span class="eyebrow" style="margin-top:8px">Куда дальше</span><p>${s.next}</p>`:""}
+      </div>
+      <div class="block">
+        <span class="eyebrow">Что пришлёт HubSpot · рабочий день на стадии</span>${tl}
+        ${s.extra?`<p class="muted" style="font-size:13px">${s.extra}</p>`:""}
+      </div>
+    </div>`;
+  if(push){ try{ history.replaceState(null,"","#"+s.id);}catch(e){} }
+}
+const h = (location.hash||"").slice(1);
+select(S.some(s=>s.id===h)?h:"chat-created",false);
+
+document.getElementById("copy-btn").addEventListener("click",e=>{
+  const txt = "Дата:\nСейчас:\nПоследнее в чате:\nСледующий шаг:\nЕсли срок стадии просрочен — почему:";
+  const btn = e.currentTarget;
+  const done = ()=>{btn.textContent="Скопировано"; setTimeout(()=>btn.textContent="Копировать",1500);};
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>selectTpl());
+  } else selectTpl();
+  function selectTpl(){const r=document.createRange();r.selectNodeContents(document.getElementById("tpl").firstChild);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);btn.textContent="Выделено, Ctrl+C";}
+});
+</script>
+
+
+</body></html>
